@@ -18,12 +18,7 @@ export default {
       levelList: null
     }
   },
-  props:{
-    custom:{
-      type:String,
-      required:false
-    }
-  },
+  props:['custom'],
   watch: {
     $route() {
       this.getBreadcrumb()
@@ -36,19 +31,17 @@ export default {
     getBreadcrumb() {
       // only show routes with meta.title
       let matched = this.$route.matched.filter(item => item.meta && item.meta.title)
-      console.log(!!this.custom)
-      if(this.custom){//多添加一段路由信息，用于子组件路由显示路径，
-        let a = matched[matched.length-1];
-        a['title'] = this.custom
-        matched.push(a)
-      }
+
       // const first = matched[0]
 
       // if (!this.ishome(first)) {
       //   matched = [{ path: '/home', meta: { title: 'home' }}].concat(matched)
       // }
-
-      this.levelList = matched.filter(item => item.meta && item.meta.title && item.meta.breadcrumb !== false)
+      console.log(this.custom,matched)
+      this.levelList = matched.filter(item => item.meta && item.meta.title && item.meta.breadcrumb !== false);
+      if(this.custom){
+        this.levelList.push({meta:{title:this.custom},path:"/"})
+      }
     },
     ishome(route) {
       const name = route && route.name
@@ -81,6 +74,7 @@ export default {
   font-size: 24px;
   line-height: 1.6;
   font-weight: 500;
+  margin-bottom: 32px;
   .no-redirect {
     color: #b1b2b3;
     cursor: text;

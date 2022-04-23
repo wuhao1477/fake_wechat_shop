@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <!-- <breadcrumb class="breadcrumb-container" /> -->
+    <breadcrumb class="breadcrumb-container" custom="选择类目" />
     <selectlist />
   </div>
 </template>
