@@ -98,10 +98,10 @@ export const constantRoutes = [
         // ]
       },
       {
-        path: 'shop_category',
-        name: 'shop_category',
-        component: () => import('@/views/shop/shop_category/index'),
-        meta: { title: '分类管理' }
+        path: 'goodslist',
+        name: 'goodslist',
+        component: () => import('@/views/goods/goodslist/index'),
+        meta: { title: '商品列表' }
       }
     ]
   },
