@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="typebox">
-      <div class="tablist">
+      <!-- <div class="tablist">
         <template v-for="(item, index) in typelist">
           <div
             class="tab"
@@ -13,7 +13,8 @@
             }}</a>
           </div>
         </template>
-      </div>
+      </div> -->
+      <tablist :tablist="tablist" :choose_active="choose_active" />
       <div class="form">
         <div class="oneline">
           <div class="input-content">
@@ -80,7 +81,7 @@
             <div class="item operation_item">下架</div>
             <div class="item operation_item">新增</div>
           </div>
-          <goodslist :goodslist="goodslist" />
+          <goodslist :goodslist="goodslist" :check_all="check_all" />
         </div>
       </div>
     </div>
@@ -89,71 +90,85 @@
 
 <script>
 import goodslist from "./goodslist";
+import tablist from "@/components/TabList"
 export default {
   name: "listframe",
-  components: { goodslist },
+  components: { goodslist,tablist },
   data() {
     return {
-      active: 0,
-      typelist: [
+      tablist: {
+        active:0,
+        data:[
         {
           name: "全部",
           number: 1,
+          active: true,
         },
         {
           name: "上架销售中",
           number: 0,
+          active: false,
         },
         {
           name: "已下架",
           number: 0,
+          active: false,
         },
-        { name: "待上架", number: 0 },
-        { name: "最近删除", number: 0 },
-      ],
+        { name: "待上架", number: 0,active: false, },
+        { name: "最近删除", number: 0 ,active: false,},
+      ]
+      },
       goodslist: [
         {
-          goods_name:"洗衣机清洗",
+          goods_name: "洗衣机清洗",
           goods_img:
             "https://store.mp.video.tencent-cloud.com/161/20304/snscosdownload/SZ/reserved/60cc99cd00006a9e00000000386f5609000000a000004f50?imageView2/1/w/53/format/webp=",
-            spuId:"SpuId",
-            price:0,
-            stock:0,
-            sales_number:0,
-            check_time:"2021/06/18",
-            state:0,
-            active:true
+          spuId: "SpuId",
+          price: 0,
+          stock: 0,
+          sales_number: 0,
+          check_time: "2021/06/18",
+          state: 0,
+          active: true,
         },
         {
-          goods_name:"洗衣机清洗",
+          goods_name: "洗衣机清洗",
           goods_img:
             "https://store.mp.video.tencent-cloud.com/161/20304/snscosdownload/SZ/reserved/60cc99cd00006a9e00000000386f5609000000a000004f50?imageView2/1/w/53/format/webp=",
-            spuId:"SpuId",
-            price:0,
-            stock:0,
-            sales_number:0,
-            check_time:"2021/06/18",
-            state:0,
-            active:false
-        },{
-          goods_name:"洗衣机清洗",
+          spuId: "SpuId",
+          price: 0,
+          stock: 0,
+          sales_number: 0,
+          check_time: "2021/06/18",
+          state: 0,
+          active: false,
+        },
+        {
+          goods_name: "洗衣机清洗",
           goods_img:
             "https://store.mp.video.tencent-cloud.com/161/20304/snscosdownload/SZ/reserved/60cc99cd00006a9e00000000386f5609000000a000004f50?imageView2/1/w/53/format/webp=",
-            spuId:"SpuId",
-            price:0,
-            stock:0,
-            sales_number:0,
-            check_time:"2021/06/18",
-            state:0,
-            active:false
-        }
+          spuId: "SpuId",
+          price: 0,
+          stock: 0,
+          sales_number: 0,
+          check_time: "2021/06/18",
+          state: 0,
+          active: false,
+        },
       ],
     };
   },
   computed: {},
   methods: {
-    choose(index) {
-      this.active = index;
+    choose_active(index) {
+      // this.set(this.typelist[i],'active',)
+      this.tablist.active = index;
+    },
+    check_all(e) {
+      this.goodslist = this.goodslist.map((value)=> {
+        value.active=e.target.checked
+        return value
+      })
     },
   },
 };
@@ -282,21 +297,21 @@ export default {
     }
   }
 }
-.tablist {
-  margin-bottom: 32px;
-  border-bottom: 1px solid #e0e1e2;
-  .tab {
-    margin-right: 32px;
-    max-width: 80px;
-    height: 50px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: #1a1b1c;
-    font-weight: 500;
-  }
-  .active {
-    border-bottom: 2px solid #1a1b1c;
-  }
-}
+// .tablist {
+//   margin-bottom: 32px;
+//   border-bottom: 1px solid #e0e1e2;
+//   .tab {
+//     margin-right: 32px;
+//     max-width: 80px;
+//     height: 50px;
+//     display: inline-flex;
+//     align-items: center;
+//     justify-content: center;
+//     color: #1a1b1c;
+//     font-weight: 500;
+//   }
+//   .active {
+//     border-bottom: 2px solid #1a1b1c;
+//   }
+// }
 </style>

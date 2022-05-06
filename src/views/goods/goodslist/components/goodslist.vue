@@ -2,7 +2,7 @@
   <div>
     <div class="header">
       <div class="box" style="padding: 15px 0 15px 15px">
-        <input type="checkbox" />
+        <input type="checkbox" @click="check_all"  />
       </div>
       <div class="box"><div class="title item">商品名称</div></div>
       <div class="box"><div class="SpuId item">SpuId</div></div>
@@ -51,7 +51,7 @@
 export default {
   name: "goodslist",
   components: {},
-  props: ["goodslist"],
+  props: ["goodslist",'check_all'],
   data() {
     return {};
   },

@@ -105,6 +105,26 @@ export const constantRoutes = [
       }
     ]
   },
+  {
+    path: '/order',
+    component: Layout,
+    redirect: '/order',
+    name: 'order',
+    meta: { title: '订单与配送', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'orderlist',
+        name: 'orderlist',
+        component: () => import('@/views/order/orderlist/index'),
+        meta: { title: '订单管理' }
+      },      {
+        path: 'orderlist',
+        name: 'orderlist',
+        component: () => import('@/views/order/orderlist/index'),
+        meta: { title: '订单列表' }
+      }
+    ]
+  },
 
   // {
   //   path: '/nested',
