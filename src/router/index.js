@@ -118,10 +118,10 @@ export const constantRoutes = [
         component: () => import('@/views/order/orderlist/index'),
         meta: { title: '订单管理' }
       },      {
-        path: 'orderlist',
-        name: 'orderlist',
-        component: () => import('@/views/order/orderlist/index'),
-        meta: { title: '订单列表' }
+        path: 'delivery',
+        name: 'delivery',
+        component: () => import('@/views/order/delivery/index'),
+        meta: { title: '快递管理' }
       }
     ]
   },
