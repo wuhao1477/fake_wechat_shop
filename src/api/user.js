@@ -1,16 +1,16 @@
 import request from '@/utils/request'
 
-export function login(data) {
+export function login(params) {
   return request({
-    url: '/vue-admin-template/user/login',
-    method: 'post',
-    data
+    url: '/api/login',
+    method: 'get',
+    params
   })
 }
 
 export function getInfo(token) {
   return request({
-    url: '/vue-admin-template/user/info',
+    url: 'http://127.0.0.1/user/info',
     method: 'get',
     params: { token }
   })
