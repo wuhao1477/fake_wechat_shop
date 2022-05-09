@@ -10,15 +10,15 @@ export function login(params) {
 
 export function getInfo(token) {
   return request({
-    url: 'http://127.0.0.1/user/info',
+    url: '/api/user/info',
     method: 'get',
-    params: { token }
+    params: {  }
   })
 }
 
 export function logout() {
   return request({
-    url: '/vue-admin-template/user/logout',
+    url: '/api/user/logout',
     method: 'post'
   })
 }
